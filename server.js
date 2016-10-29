@@ -19,4 +19,24 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const books = require('./data.js');
-console.log(books);
+
+//ROUTING
+router.get('/books', (req, res)=>{
+  res.send('books')
+});
+
+router.get('/ping', (req, res)=>{
+  res.send('PONG!')
+})
+
+//Register Routes
+app.use('/', router)
+
+//RUN THE APP
+const hostname = process.env.HOST || "localhost";
+const port = process.env.PORT || "3000";
+
+app.listen(port, hostname, (err)=>{
+  if (err) console.log(err);
+  console.log(`Server is running on ${hostname}:${port}`);
+})
