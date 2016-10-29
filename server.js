@@ -22,11 +22,21 @@ const books = require('./data.js');
 
 //ROUTING
 router.get('/books', (req, res)=>{
-  res.send('books')
+  res.send(books)
 });
 
 router.get('/ping', (req, res)=>{
-  res.send('PONG!')
+  res.json({'message':'PONG!'})
+});
+
+router.post('/books', (req, res)=>{
+  const book = {
+    id: req.body.id,
+    name: req.body.name,
+    price: req.body.price
+  }
+  books.push(book)
+  res.json(book)
 })
 
 //Register Routes
@@ -34,9 +44,9 @@ app.use('/', router)
 
 //RUN THE APP
 const hostname = process.env.HOST || "localhost";
-const port = process.env.PORT || "3000";
+const port = process.env.PORT || "3000"; //untuk client side silahkan gunakan 8000
 
 app.listen(port, hostname, (err)=>{
   if (err) console.log(err);
-  console.log(`Server is running on ${hostname}:${port}`);
+  console.log(`Bro, Server is running on ${hostname} : ${port}`);
 })
