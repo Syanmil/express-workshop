@@ -31,12 +31,32 @@ router.get('/ping', (req, res)=>{
 
 router.post('/books', (req, res)=>{
   const book = {
-    id: req.body.id,
+    id: Number(req.body.id),
     name: req.body.name,
-    price: req.body.price
+    price: Number(req.body.price)
   }
   books.push(book)
   res.json(book)
+});
+
+router.get('books/:id', (req, res)=>{
+  let book = books.filter(book => {
+    return book.id == req.params.id
+  })[0]
+  if (!book) res.status(404).json({'message': "no book found"})
+
+  res.status(200).json(book)
+});
+
+router.delete('books/:id', (req, res)=>{
+  let book = books.filter(book =>{
+    return book.id == req.params.id
+  })
+  if (!book) res.status(404).json({'message': "no book found"})
+
+  books.splice(books.indexOf(book), 1)
+
+  res.json({'message': `Book ${id} has been deleted`})
 })
 
 //Register Routes
