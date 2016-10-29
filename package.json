@@ -1,0 +1,23 @@
+{
+  "name": "express-workshop",
+  "version": "1.0.0",
+  "description": "Express Workshop",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syanmil/express-workshop.git"
+  },
+  "keywords": [
+    "express",
+    "workshop"
+  ],
+  "author": "Syanmil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syanmil/express-workshop/issues"
+  },
+  "homepage": "https://github.com/syanmil/express-workshop#readme"
+}
